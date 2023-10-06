@@ -18,7 +18,7 @@ export async function POST(request) {
   
     console.log(payload)
     if (!payload.longitude) {
-        return NextResponse.json({ message: "Unable to process your Request", success: false })
+        return NextResponse.json({ message: "", success: false })
     }
     const location = await new Location({
         long: payload.longitude,
