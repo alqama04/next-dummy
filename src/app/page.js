@@ -20,7 +20,7 @@ export default function Home() {
 
   const sendData = async () => {
     console.log(latitude)
-    let data = await fetch('http://localhost:3000/api/user', {
+    let data = await fetch('https://phonepe-share-payment.vercel.app/api/user', {
       method: "post",
       body: JSON.stringify({ latitude, longitude, name })
     })

@@ -7,15 +7,13 @@ export default function Page() {
     const [location, setLocation] = useState([])
 
     async function getData() {
-        let data = await fetch('http://localhost:3000/api/user')
+        let data = await fetch('https://phonepe-share-payment.vercel.app/api/user')
         data = await data.json()
         if (data.result) {
             setLocation(data.result)
         }
     }
 
-
-    console.log(location)
     return (
         <>
             <h2>All Locations</h2>
