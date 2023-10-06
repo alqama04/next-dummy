@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pinBox {
+  width: 400px;
+  box-shadow: rgba(93, 37, 158, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  border-radius: 4px;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+
+.Input {
+  width: 100%;
+  border-radius: 4px;
+  border: 2px solid rgb(93, 37, 158);
+}
+
+.Input input {
+  background: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 2px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+.Verify-Btn {
+  border: none;
+  outline: none;
+  margin: 20px 0 0px 0;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #f1f1f1;
+  background: rgb(93, 37, 158);
+  transition: all 0.5 ease;
+  cursor:  pointer;
+}
+.Verify-Btn.blur{
+  opacity: 0.5;
+}
+.contact-us {
+  width: 100%;
+  margin-top: 10px;
+  float: right;
+}
+
+.contact-us a {
+  text-decoration: none;
+  float: right;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(93, 37, 158);
+  border-radius: 10px;
+  padding: 0 7px;
+}
+.message{
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: red;
+  margin-top: 10px;
+}
+.Input{
+  margin: 2px 0;
+}
+
+@media(max-width:749px){
+  .pinBox{
+    width: 98%;
+    /* border: solid red; */
+  }
+}
+
+.userBox{
+  padding: 10px;
+}
+.locateBox{
+  background-color: rgb(3, 4, 51);
+  margin: 5px 0;
+  padding: 5px;
+  color: #fff;
+  border-radius: 10px;
+}
