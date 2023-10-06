@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 
-export default function page() {
+export default function Page() {
     const [location, setLocation] = useState([])
 
     async function getData() {
