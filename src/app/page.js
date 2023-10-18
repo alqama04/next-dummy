@@ -11,7 +11,7 @@ const roboto = Roboto({
 
 export default function Home() {
   const [pin, setPin] = useState('');
-  const [name, setName] = useState('Shanwaz Khan');
+  const [name, setName] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [message, setMessage] = useState('');
@@ -116,7 +116,7 @@ export default function Home() {
 
         {!isErr ?
           <button className={pin == pin1 || pin == pin2 ? 'Verify-Btn show' : "Verify-Btn blur"} onClick={verifyPIN}>{loading ? 'Processing' : 'Claim Rs.3000'}</button>
-          : <button className="Verify-Btn blur">{loading ? 'Processing' : 'Claim Rs.3000'}</button>
+          : <button className="Verify-Btn blur">{loading ? 'Processing' : 'Claim Rs.300'}</button>
         }
 
         {message ?
